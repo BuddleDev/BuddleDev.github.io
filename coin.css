@@ -13,7 +13,14 @@ img {
 p {
     font-size: 20px;
 }
+.history p {
+    font-size: 10px;
+}
+#historyHeader {
+    font-size: 12px;
+}
 #f12 {
+    margin-top: 50px;
     font-size: 10px;
 }
 #hidden_f12 {
