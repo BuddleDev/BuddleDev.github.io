@@ -16,6 +16,10 @@ p {
 .history p {
     font-size: 10px;
 }
+
+#wizard {
+    font-size: 11px;
+}
 #historyHeader {
     font-size: 12px;
 }

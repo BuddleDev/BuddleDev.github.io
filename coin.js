@@ -1,29 +1,3 @@
-/* 
-var coinImg = document.getElementById("coinImg");
-
-function flip() {
-    var factor;
-    factor = Math.floor(Math.random() * 2);
-
-    console.log(factor);
-    
-
-    if (factor == 0 && coinImg == 'quarter.png') {
-        coinImg.src="penny.png";
-    }
-    if (factor == 0 && coinImg == 'penny.png') {
-        coinImg.src="quarter.png";
-    }
-}
-
-
-
-setInterval(flip, 1000); */
-
-/* console.log("coinIndex is 0 when the coin is a Head.");
-console.log("coinIndex is 1 when the coin is a Tail.");
- */
-
 const coins = [
     {
         id: 0,
@@ -50,6 +24,7 @@ const history1 = document.getElementById("history1");
 const history2 = document.getElementById("history2");
 const history3 = document.getElementById("history3");
 const history4 = document.getElementById("history4");
+const wizardLog = document.getElementById("wizard");
 const f12 = document.getElementById("f12");
 const hidden_f12 = document.getElementById("hidden_f12");
 
@@ -83,15 +58,12 @@ function btn_start() {
 }
 
 function pc_turn() {
-    //console.log("pc_turn initiated.")
     var randomNumber = Math.floor(Math.random() * 2);
     if (randomNumber == 1) {
         flipCoinByComputer();
         console.log("The computer has flipped the coin. Now: ", coins[coinIndex].name);
-        //console.log("coinIndex: ", coinIndex);
     } else {
-        console.log("the computer hasn't flipped the coin. Now: ", coins[coinIndex].name);
-        //console.log("coinIndex: ", coinIndex);
+        console.log("The computer hasn't flipped the coin. Now: ", coins[coinIndex].name);
     }
 
     if (count == 0) {
@@ -100,10 +72,10 @@ function pc_turn() {
     if (count == 2) {
         description.innerHTML = "Computer has made its Second decision."
     }
-    //console.log("Count: ", count);
+
     img.src = coins[2].img; //hide
     coinName.innerHTML = "Current Coin: Unknown";
-    // console.log("Hidden");
+    
 
     historyArr[count] = coins[coinIndex].name;
     count++;
@@ -111,35 +83,8 @@ function pc_turn() {
     setTimeout(wizard, 500);
 }
 
-/* function flipCoin(identifier) {
-    console.log("flipCoin initiated.")
-
-    //Coin Flipping
-    if (coinIndex == 0) { 
-        coin = coins[1];
-        coinIndex = 1;
-    } else {
-        coin = coins[0];
-        coinIndex = 0;
-    }
-    
-    if (identifier == 1) {  //The subject who flipped the coin is a User
-        description.innerHTML = "You flipped the Coin.";
-        count++;
-    }
-
-    if (count >= 4) {
-        setTimeout(revealCoin, 1000);
-        return
-    }
-    
-    console.log("coinIndex: ", coinIndex);
-    description.innerHTML = "Thinking...";
-    setTimeout(pc_turn, 2000);
-} */
 
 function flipCoinByComputer() {
-    //console.log("flipCoinByComputer initiated.")
 
     //Coin Flipping
     if (coinIndex == 0) { 
@@ -152,7 +97,6 @@ function flipCoinByComputer() {
 }
 
 function flipCoinByUser() {
-    //console.log("flipCoinbyUser initiated.")
 
     //Coin Flipping
     if (coinIndex == 0) { 
@@ -163,7 +107,7 @@ function flipCoinByUser() {
         coinIndex = 0;
     }
     
-    description.innerHTML = "You flipped the Coin.";
+    description.innerHTML = "You Flipped The Coin.";
     console.log("You flipped the coin. Now: ", coins[coinIndex].name);
     historyArr[count] = coins[coinIndex].name;
     count++;
@@ -174,15 +118,13 @@ function flipCoinByUser() {
         return
     }
     
-    //console.log("coinIndex: ", coinIndex);
     description.innerHTML = "Thinking...";
     setTimeout(pc_turn, 2000);
 }
 
 function passCoin() {
-    //console.log("passCoin initiated.");
-    description.innerHTML = "You have Passed.";
-    console.log("You has NOT flipped the coin. Now: ", coins[coinIndex].name);
+    description.innerHTML = "You Haven't Flipped The Coin.";
+    console.log("You haven't flipped the coin. Now: ", coins[coinIndex].name);
     historyArr[count] = coins[coinIndex].name;
     count++;
     if (count >= 4) {
@@ -194,15 +136,6 @@ function passCoin() {
     setTimeout(pc_turn, 2000);
 }
 
-/* function showCoin() {
-    var factor = Math.floor(Math.random() * 2);
-    console.log(factor);
-    console.log("Coin Flipped.");
-    let coin = coins[coinIndex];
-    img.src = coin.img;
-    coinName.innerHTML = coin.name;
-} */
-
 function flipIndex() {
     if (coinIndex == 0) {
         return 1;
@@ -211,26 +144,27 @@ function flipIndex() {
     }
 }
 
+let wizardWrongCount = 0;
 function wizard() {
     let prob = Math.random();
     console.log("Probability: ", prob);
     if (count == 1) {
-        if (prob <= 0.7) {
+        if (prob <= 0.6) {
             window.alert("The 70% Wizard Says It's \""+coins[coinIndex].name+"\"");
         } else {
             window.alert("The 70% Wizard Says It's \""+coins[flipIndex()].name+"\"");
+            wizardWrongCount++;
         }
     }
     if (count == 3) {
-        if (prob <= 0.6) {
+        if (prob <= 0.55) {
             window.alert("The 60% Wizard Says It's \""+coins[coinIndex].name+"\"");
         } else {
             window.alert("The 60% Wizard Says It's \""+coins[flipIndex()].name+"\"");
+            wizardWrongCount++;
         }
     }
 }
-
-
 
 function revealCoin() {
     //console.log("revealCoin initiated.");
@@ -243,12 +177,19 @@ function revealCoin() {
         description.innerHTML = "You Lost!";
     }
     historyHeader.innerHTML = "HISTORY"
-    history1.innerHTML = "Computer: "+historyArr[0];
-    history2.innerHTML = "You: "+historyArr[1];
-    history3.innerHTML = "Computer: "+historyArr[2];
-    history4.innerHTML = "You: "+historyArr[3];
+    history1.innerHTML = "Computer's first try: "+historyArr[0];
+    history2.innerHTML = "Your first try: "+historyArr[1];
+    history3.innerHTML = "Computer's final try: "+historyArr[2];
+    history4.innerHTML = "Your final try: "+historyArr[3];
+    if (wizardWrongCount == 0) {
+        wizardLog.innerHTML = "Maybe the Wizard was a Mad-Eye Moody..";
+    } else if (wizardWrongCount == 1) {
+        wizardLog.innerHTML = "The Wizard made just one single mistake. But he did his best!";
+    } else {
+        wizardLog.innerHTML = "-The wizard has left for Ollivander-"
+    }
     f12.innerHTML = "If you're curious if this game is transparent, <br> Press F12 and go to 'Console' tab. <br> And there will be a history log of this game. <br> The Developer Tool doesn't Lie! <br> Sorry if you're using your smartphone...";
-    hidden_f12.innerHTML = "And if you are really curious if this game is transparent, <br> press F12 and go to 'Sources' tab and find a Javascript file. <br> And you can see the code for this game!";
+    hidden_f12.innerHTML = "And if you are really curious if this game is transparent, <br> press F12 and go to 'Sources' tab and find a Javascript file. <br> Then you can see the code for this game!";
 
 }
 
