@@ -211,7 +211,7 @@ function revealCoin() {
     if (coinIndex == 0) { //Head
         description.innerHTML = "You Won!";
     } else { //Tail
-        description.innerHTML = "You Lost!";
+        description.innerHTML = "You Lost...";
     }
     historyHeader.innerHTML = "HISTORY"
     history1.innerHTML = "Computer: "+historyArr[0];
