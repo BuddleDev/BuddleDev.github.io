@@ -45,12 +45,18 @@ const coins = [
 const img = document.getElementById("coinImg");
 const coinName = document.getElementById("coinName");
 const description = document.getElementById("description");
+const historyHeader = document.getElementById("historyHeader");
+const history1 = document.getElementById("history1");
+const history2 = document.getElementById("history2");
+const history3 = document.getElementById("history3");
+const history4 = document.getElementById("history4");
 const f12 = document.getElementById("f12");
 const hidden_f12 = document.getElementById("hidden_f12");
 
 let coinIndex = 0;
 let coin;
 let count = 0;
+let historyArr = [];
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -99,6 +105,7 @@ function pc_turn() {
     coinName.innerHTML = "Current Coin: Unknown";
     // console.log("Hidden");
 
+    historyArr[count] = coins[coinIndex].name;
     count++;
 }
 
@@ -156,6 +163,7 @@ function flipCoinByUser() {
     
     description.innerHTML = "You flipped the Coin.";
     console.log("You flipped the coin. Now: ", coins[coinIndex].name);
+    historyArr[count] = coins[coinIndex].name;
     count++;
     
 
@@ -173,6 +181,7 @@ function passCoin() {
     //console.log("passCoin initiated.");
     description.innerHTML = "You have Passed.";
     console.log("You has NOT flipped the coin. Now: ", coins[coinIndex].name);
+    historyArr[count] = coins[coinIndex].name;
     count++;
     if (count >= 4) {
         setTimeout(revealCoin, 1000);
@@ -204,6 +213,11 @@ function revealCoin() {
     } else { //Tail
         description.innerHTML = "You Lost!";
     }
+    historyHeader.innerHTML = "HISTORY"
+    history1.innerHTML = "Computer: "+historyArr[0];
+    history2.innerHTML = "You: "+historyArr[1];
+    history3.innerHTML = "Computer: "+historyArr[2];
+    history4.innerHTML = "You: "+historyArr[3];
     f12.innerHTML = "If you're curious if this game is transparent, <br> Press F12 and go to 'Console' tab. <br> And there will be a history log of this game. <br> The Developer Tool doesn't Lie! <br> Sorry if you're using your smartphone...";
     hidden_f12.innerHTML = "And if you are really curious if this game is transparent, <br> press F12 and go to 'Sources' tab and find a Javascript file. <br> And you can see the code for this game!";
 
