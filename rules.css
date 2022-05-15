@@ -1,0 +1,11 @@
+body {
+    font-family: 'Zen Loop', cursive;
+    padding-bottom: 50px;
+}
+h1 {
+    font-size: 70px;
+}
+p {
+    font-size: 35px;
+    margin: 2px;
+}

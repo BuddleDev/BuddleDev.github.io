@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="coin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,400;1,200&display=swap" rel="stylesheet">
+    <title>Guess the Coin</title>
+</head>
+<body>
+    <h1>Guess the Coin</h1>
+    <img id="coinImg" alt="heads">
+    <p id="description"></p>
+    <p id="coinName"></p>
+    <p id="f12"></p>
+    <div>
+        <button id="btn_start" onclick="btn_start()">Start</button>
+        <button id="btn_flip" onclick="flipCoinByUser()">Flip</button>
+        <button id="btn_pass" onclick="passCoin()">Pass</button>
+    </div>
+    <div id="rules">
+        <a href="rules.html">Rules</a>
+    </div>
+    <p id="hidden_f12"></p>
+    
+</body>
+<script src="coin.js"></script>
+</html>

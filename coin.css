@@ -1,0 +1,40 @@
+body {
+    text-align: center;
+    font-family: 'Spectral SC', serif;
+    font-weight: 400;
+}
+h1 {
+    font-weight: inherit;
+}
+img {
+    width: 80px;
+    margin: 20px;
+}
+p {
+    font-size: 20px;
+}
+#f12 {
+    font-size: 10px;
+}
+#hidden_f12 {
+    font-size: 8px;
+}
+
+button {
+    margin-right: 10px;
+    font-family: inherit;
+    background-color: white;
+}
+
+button:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+#rules {
+    margin-top: 20px;
+}
+
+#rules a {
+    color: grey;
+}
+
