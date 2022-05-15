@@ -150,17 +150,17 @@ function wizard() {
     console.log("Probability: ", prob);
     if (count == 1) {
         if (prob <= 0.6) {
-            window.alert("The 70% Wizard Says It's \""+coins[coinIndex].name+"\"");
+            window.alert("The 60% Wizard Says It's \""+coins[coinIndex].name+"\"");
         } else {
-            window.alert("The 70% Wizard Says It's \""+coins[flipIndex()].name+"\"");
+            window.alert("The 60% Wizard Says It's \""+coins[flipIndex()].name+"\"");
             wizardWrongCount++;
         }
     }
     if (count == 3) {
         if (prob <= 0.55) {
-            window.alert("The 60% Wizard Says It's \""+coins[coinIndex].name+"\"");
+            window.alert("The 55% Wizard Says It's \""+coins[coinIndex].name+"\"");
         } else {
-            window.alert("The 60% Wizard Says It's \""+coins[flipIndex()].name+"\"");
+            window.alert("The 55% Wizard Says It's \""+coins[flipIndex()].name+"\"");
             wizardWrongCount++;
         }
     }
