@@ -107,6 +107,8 @@ function pc_turn() {
 
     historyArr[count] = coins[coinIndex].name;
     count++;
+
+    setTimeout(wizard, 500);
 }
 
 /* function flipCoin(identifier) {
@@ -201,6 +203,33 @@ function passCoin() {
     coinName.innerHTML = coin.name;
 } */
 
+function flipIndex() {
+    if (coinIndex == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function wizard() {
+    let prob = Math.random();
+    console.log("Probability: ", prob);
+    if (count == 1) {
+        if (prob <= 0.7) {
+            window.alert("The 70% Wizard Says It's \""+coins[coinIndex].name+"\"");
+        } else {
+            window.alert("The 70% Wizard Says It's \""+coins[flipIndex()].name+"\"");
+        }
+    }
+    if (count == 3) {
+        if (prob <= 0.6) {
+            window.alert("The 60% Wizard Says It's \""+coins[coinIndex].name+"\"");
+        } else {
+            window.alert("The 60% Wizard Says It's \""+coins[flipIndex()].name+"\"");
+        }
+    }
+}
+
 
 
 function revealCoin() {
@@ -211,7 +240,7 @@ function revealCoin() {
     if (coinIndex == 0) { //Head
         description.innerHTML = "You Won!";
     } else { //Tail
-        description.innerHTML = "You Lost...";
+        description.innerHTML = "You Lost!";
     }
     historyHeader.innerHTML = "HISTORY"
     history1.innerHTML = "Computer: "+historyArr[0];
