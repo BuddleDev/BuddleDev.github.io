@@ -1,0 +1,24 @@
+h1 {
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+.originals {
+    text-align: right;
+    font-size: 20px;
+}
+.noto {
+    font-family: 'Noto Emoji', sans-serif;
+    font-size: 23px;
+    padding-bottom: 30px;
+}
+.final {
+    font-family: 'Noto Emoji', sans-serif;
+    font-size: 100px;
+    text-align: center;
+}
